@@ -6,30 +6,30 @@ export interface User {
   userId: string;
 }
 
-type experience = {
+interface experience {
   organization: string;
   position: string;
   start: string;
   end: string;
   address: string;
   state: number;
-};
+}
 
-type education = {
+interface education {
   institution: string;
   qualification: string;
   fieldOfStudy: string;
   graduationDate: string;
   state: number;
-};
+}
 
-export type credential = {
+export interface credential {
   name: string;
   url: string;
   id?: string;
   fileType: string;
   userId: string;
-};
+}
 export interface CVType {
   fullName: string;
   address: string;

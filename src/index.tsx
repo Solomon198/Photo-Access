@@ -14,8 +14,8 @@ import {
   Route,
   Redirect,
 } from "react-router-dom";
-import AuthRoute from "./screens/auth.route";
-import UserDashboard from "./screens/user/user.dashboard";
+import AuthRoute from "./screens/Auth/auth.route";
+import UserDashboard from "./screens/main.screens/dashboard/user.dashboard";
 import { useSelector } from "react-redux";
 import Config from "./configs/env.config";
 import firebase from "firebase/app";

@@ -1,22 +1,15 @@
-import AppMenu from "./app.menu";
-import ShowCase from "./app.showcase";
-import AppFeatures from "./app.features";
-import Contacts from "./app.contact";
-import Footer from "./app.footer";
-import LoginComponent from "./login.component";
-import SignUpComponent from "./signup.component";
-import ForgotPassword from "./forgot.password";
-import Verification from "./verification";
+import AppMenu from "./home.page.sections/header/app.menu";
+import ShowCase from "./home.page.sections/showcase/app.showcase";
+import AppFeatures from "./home.page.sections/features/app.features";
+import Contacts from "./home.page.sections/contact/app.contact";
+import Footer from "./home.page.sections/footer/app.footer";
+
 const components = {
   AppMenu,
   ShowCase,
   AppFeatures,
   Contacts,
   Footer,
-  LoginComponent,
-  SignUpComponent,
-  ForgotPassword,
-  Verification,
 };
 
 export default components;

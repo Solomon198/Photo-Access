@@ -2,8 +2,6 @@
 import "./App.css";
 import React from "react";
 import { connect } from "react-redux";
-import { User } from "./types/declarations";
-import AuthRoute from "./screens/auth.route";
 import HomeScreen from "./screens/index";
 import { Redirect, Switch, Route } from "react-router-dom";
 

@@ -9,13 +9,13 @@ const config = {
 };
 const PRODUCTION = {
   API_ENDPOINT: "https://jobworld-api.herokuapp.com",
-  APP_NAME: "jobworld360",
+  APP_NAME: "Photo Access",
   FIREBASE_CONFIG: config,
 };
 
 const DEVELOPEMENT = {
   API_ENDPOINT: "http://localhost:3000",
-  APP_NAME: "jobworld360",
+  APP_NAME: "Photo Access",
   FIREBASE_CONFIG: config,
 };
 

@@ -1,8 +1,7 @@
-import { all } from 'redux-saga/effects';
-import AuthSaga from '../screens/Auth/redux.saga';
-import StepSaga from '../screens/rightDrawer/cv-steps/steps.saga';
-import UtilSaga from '../utilities/utils.saga';
-import UserSaga from '../screens/user/user.saga';
+import { all } from "redux-saga/effects";
+import AuthSaga from "../screens/Auth/redux.saga";
+import UtilSaga from "../utilities/utils.saga";
+import UserSaga from "../screens/main.screens/dashboard/user.saga";
 
 export default function* rootSaga() {
   yield all([
@@ -13,11 +12,6 @@ export default function* rootSaga() {
     UserSaga.watchSetSubscription(),
     UserSaga.watchGetJobs(),
     UtilSaga.configureSnackBar(),
-
-    StepSaga.watchSetFieldValue(),
-    StepSaga.watchSetErrorValue(),
-    StepSaga.watchSubmitCv(),
-    StepSaga.watchSetResetSubmitCv(),
 
     AuthSaga.watchSetNewPassword(),
     AuthSaga.watchSetConfirmNewPassword(),
