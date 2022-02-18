@@ -1,9 +1,8 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import { connect } from "react-redux";
 import { inputAction, ressetPassword } from "../auth.actions";
+import Components from "../../../components/index";
 
 type Props = {
   ressetPassword: string;
@@ -50,6 +49,7 @@ class RessetPassword extends React.Component<Props> {
         <Typography className="createAccountTitle" component="h1" variant="h5">
           Set a new password
         </Typography>
+
         {this.props.errorRessetPassword &&
           this.props.ressetPasswordStatus ===
             ressetPassword.RESSET_PASSWORD_FAILED && (
@@ -57,7 +57,8 @@ class RessetPassword extends React.Component<Props> {
               {this.props.errorRessetPassword}
             </div>
           )}
-        <TextField
+
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -72,10 +73,9 @@ class RessetPassword extends React.Component<Props> {
           label="Password"
           type="password"
           id="password"
-          autoComplete="current-password"
-          autoFocus
         />
-        <TextField
+
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           onChange={(e) => this.props.setConfirmNewPassword(e.target.value)}
@@ -90,10 +90,9 @@ class RessetPassword extends React.Component<Props> {
           label="Confirm Password"
           type="password"
           id="password"
-          autoComplete="current-password"
         />
 
-        <Button
+        <Components.Button
           fullWidth
           variant="contained"
           onClick={() =>
@@ -121,7 +120,7 @@ class RessetPassword extends React.Component<Props> {
               aria-hidden="true"
             ></span>
           )}
-        </Button>
+        </Components.Button>
       </>
     );
   }

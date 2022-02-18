@@ -1,11 +1,10 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { sendVerificationPin, inputAction } from "../auth.actions";
+import Components from "../../../components";
 
 type Props = {
   sendVerificationPin: (payload: any, history: any) => void;
@@ -53,7 +52,7 @@ class ForgotPassord extends React.Component<Props> {
             </div>
           )}
 
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -73,7 +72,7 @@ class ForgotPassord extends React.Component<Props> {
           autoFocus
         />
 
-        <Button
+        <Components.Button
           onClick={() =>
             this.props.sendVerificationPin(
               {
@@ -93,7 +92,8 @@ class ForgotPassord extends React.Component<Props> {
           className="my-3"
         >
           Send Verification Code
-        </Button>
+        </Components.Button>
+
         <Grid container>
           <Grid item xs></Grid>
           <Grid item>

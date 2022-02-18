@@ -7,7 +7,7 @@ import Snackbar from "@material-ui/core/Snackbar";
 import MuiAlert, { AlertProps } from "@material-ui/lab/Alert";
 import { SnackBarActions } from "../../../utilities/utils.actions";
 import { GetCvActions } from "./user.actions";
-import { User } from "../../../types/declarations";
+import { User } from "../../../types/interfaces";
 
 function Alert(props: AlertProps) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -115,8 +115,8 @@ class DashboardUser extends React.Component<Props> {
         </Snackbar>
         <DialogComponent
           bodyText="Are you sure you want to logout ?"
-          buttonText1="Cancel"
-          buttonText2="Logout"
+          closeText="Cancel"
+          actionText="Logout"
           handleClose={this.toggleModal}
           handleAction={this.logout}
           open={this.state.showModal}

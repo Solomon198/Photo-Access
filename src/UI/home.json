@@ -1,0 +1,58 @@
+{
+
+    "AppBar":{
+        "Menu":{
+            "Login": "Login",
+            "SignUp": "SignUp",
+            "About": "About",
+            "Contact": "Contact"
+        },
+        "AppName": "Photo Access"
+    },
+
+    "ShowCaseSection": {
+        "Caption": "Taking Photography to the next leve",
+        "buttonText": "SignUp to save your photos"
+    },
+
+    "AppFeatureSection":{
+        "Title":{
+            "Caption": "Get Nice Photo snapshot and easy access",
+            "SubCaption": "Get your photos when you want"
+        },
+        "Features": [
+            {
+               "Caption": "Subscription or Plans",
+               "Description:":"Get free subscription notifications on latest jobs"
+            },
+            {
+                "Caption": "Upload Photos",
+                "Description:":"Upload your photos for free."
+             },
+             {
+                "Caption": "Free to Use",
+                "Description:":"free app no hidden charges"
+             },
+             {
+                "Caption": "Privacy and Security",
+                "Description:":"Your information is safe no need to panic"
+             }
+        ]
+    },
+
+    "SocialSection":{
+        "Title": "Follow our social platforms"
+    },
+
+
+    "FooterSection":{
+        "CopyRight": "Photo Access 2020. All Rights Reserved.",
+        "Others":{
+            "Terms": "Terms",
+            "Privacy": "Privacy",
+            "Faq": "FAQ"
+        }
+    }
+
+
+}

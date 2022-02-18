@@ -6,6 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { inputAction, signUpAction } from "../auth.actions";
+import Components from "../../../components/index";
 
 type Props = {
   fullName: string;
@@ -55,7 +56,7 @@ class SignUP extends Component<Props> {
               {this.props.errorSignUp}
             </div>
           )}
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -69,7 +70,7 @@ class SignUP extends Component<Props> {
           type="text"
           autoFocus
         />
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -82,7 +83,7 @@ class SignUP extends Component<Props> {
           type="number"
           disabled={this.props.signUpStatus === signUpAction.SIGNUP_STARTED}
         />
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -94,10 +95,9 @@ class SignUP extends Component<Props> {
           type="password"
           id="password"
           disabled={this.props.signUpStatus === signUpAction.SIGNUP_STARTED}
-          autoComplete="current-password"
         />
 
-        <Button
+        <Components.Button
           disabled={this.props.signUpStatus === signUpAction.SIGNUP_STARTED}
           fullWidth
           variant="contained"
@@ -123,7 +123,8 @@ class SignUP extends Component<Props> {
               aria-hidden="true"
             ></span>
           )}
-        </Button>
+        </Components.Button>
+
         <Grid container>
           <Grid item xs></Grid>
           <Grid item>

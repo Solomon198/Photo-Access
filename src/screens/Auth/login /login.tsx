@@ -1,11 +1,10 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { inputAction, loginAction } from "../auth.actions";
+import Components from "../../../components";
 
 type Props = {
   phoneNumber: string;
@@ -49,7 +48,7 @@ class Login extends React.Component<Props> {
               {this.props.errorLogin}
             </div>
           )}
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -63,7 +62,7 @@ class Login extends React.Component<Props> {
           name="number"
           autoFocus
         />
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           onChange={(e) => this.props.setLoginPassword(e.target.value)}
@@ -75,10 +74,9 @@ class Login extends React.Component<Props> {
           label="Password"
           type="password"
           id="password"
-          autoComplete="current-password"
         />
 
-        <Button
+        <Components.Button
           disabled={loginAction.LOGIN_STARTED === this.props.loginStatus}
           onClick={() =>
             this.props.doLogin({
@@ -100,7 +98,7 @@ class Login extends React.Component<Props> {
               aria-hidden="true"
             ></span>
           )}
-        </Button>
+        </Components.Button>
         {this.props.loginStatus !== loginAction.LOGIN_STARTED && (
           <Grid container>
             <Grid item xs>

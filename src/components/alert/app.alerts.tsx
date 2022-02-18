@@ -1,33 +1,28 @@
 import React from "react";
-import { makeStyles, Theme, createStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from "@material-ui/lab";
+import { AlertContainer } from "./alert.styles";
+import PropTypes from "prop-types";
 
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      width: "100%",
-      "& > * + *": {
-        marginTop: theme.spacing(2),
-      },
-    },
-  })
-);
+enum severity {
+  error = "error",
+  warning = "warning",
+  info = "info",
+  success = "success",
+}
 
-type Props = {
-  severity: "error" | "warning" | "info" | "success";
-  title: string;
-  body: string;
-};
-
-export default function DescriptionAlerts(Props: Props) {
-  const classes = useStyles();
-
+export default function PopUpAlerts({ severity, title, body }) {
   return (
-    <div className={classes.root}>
-      <Alert severity={Props.severity}>
-        <AlertTitle>{Props.title}</AlertTitle>
-        {Props.body}
+    <AlertContainer>
+      <Alert severity={severity}>
+        <AlertTitle>{title}</AlertTitle>
+        {body}
       </Alert>
-    </div>
+    </AlertContainer>
   );
 }
+
+PopUpAlerts.propTypes = {
+  title: PropTypes.string.isRequired,
+  severity: severity,
+  body: PropTypes.string.isRequired,
+};

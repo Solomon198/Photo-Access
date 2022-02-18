@@ -1,10 +1,9 @@
 import React from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { connect } from "react-redux";
 import { inputAction, verifyPin, sendVerificationPin } from "../auth.actions";
+import Components from "../../../components/index";
 
 type Props = {
   vCode: string;
@@ -88,7 +87,7 @@ class Verification extends React.Component<Props> {
               </div>
             )}
         </div>
-        <TextField
+        <Components.TextInput
           variant="outlined"
           margin="normal"
           required
@@ -106,7 +105,7 @@ class Verification extends React.Component<Props> {
           className="text-center"
         />
 
-        <Button
+        <Components.Button
           disabled={
             this.props.verifyPinStatus === verifyPin.VERIFYING_PIN_STARTED
           }
@@ -130,7 +129,7 @@ class Verification extends React.Component<Props> {
               aria-hidden="true"
             ></span>
           )}
-        </Button>
+        </Components.Button>
         <p style={{ fontSize: 12, marginTop: 10 }}>
           A verification code has been sent to the phone number you registered
           please enter the verification to verify your account
@@ -138,7 +137,7 @@ class Verification extends React.Component<Props> {
         <Grid container>
           <Grid item xs></Grid>
           <Grid item>
-            <Button
+            <Components.Button
               disabled={
                 this.props.sendVerificationPinStatus ===
                 sendVerificationPin.SEND_VERIFICATION_PIN_STARTED
@@ -159,7 +158,7 @@ class Verification extends React.Component<Props> {
                   aria-hidden="true"
                 ></span>
               )}
-            </Button>
+            </Components.Button>
           </Grid>
         </Grid>
       </>

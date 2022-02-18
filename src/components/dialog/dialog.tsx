@@ -1,18 +1,19 @@
 import React from "react";
-import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogTitle from "@material-ui/core/DialogTitle";
-import Button from "@material-ui/core/Button";
+import Components from "../index";
+import { Dialog } from "./dialog.styles";
+import PropTypes from "prop-types";
 
 const DialogComponent = ({
   open,
   handleClose,
   handleAction,
   bodyText,
-  buttonText1,
-  buttonText2,
+  closeText,
+  actionText,
   headerTitle,
 }) => (
   <Dialog
@@ -28,14 +29,21 @@ const DialogComponent = ({
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Button onClick={handleClose} color="primary">
-        {buttonText1}
-      </Button>
-      <Button onClick={handleAction} color="primary" autoFocus>
-        {buttonText2}
-      </Button>
+      <Components.Button onClick={handleClose} color="primary">
+        {closeText}
+      </Components.Button>
+      <Components.Button onClick={handleAction} color="primary">
+        {actionText}
+      </Components.Button>
     </DialogActions>
   </Dialog>
 );
+
+DialogComponent.propTypes = {
+  closeText: PropTypes.string.isRequired,
+  actionText: PropTypes.string.isRequired,
+  handleClose: PropTypes.func.isRequired,
+  handleAction: PropTypes.func.isRequired,
+};
 
 export default DialogComponent;
