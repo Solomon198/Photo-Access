@@ -10,9 +10,32 @@ import {
 } from "./auth.actions";
 import axios from "axios";
 import * as joi from "joi";
+import {
+  createUserWithEmailAndPassword,
+  getAuth,
+  updateProfile,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
 import config from "../../configs/env.config";
+
+// Initialize Firebase
 const configuration = config();
+
+const CreateUser = async (name: string, email: string, password) => {
+  const auth = getAuth();
+  const user = await createUserWithEmailAndPassword(auth, email, password);
+  await updateProfile(auth.currentUser as any, {
+    displayName: name,
+  });
+  return user.user.uid;
+};
+
+const SignIn = async (email: string, password) => {
+  const auth = getAuth();
+  const user = await signInWithEmailAndPassword(auth, email, password);
+  return user.user.uid;
+};
 
 function* watchSetSignupFullName() {
   yield takeEvery(
@@ -88,17 +111,9 @@ function* watchSetLoginPassword() {
 
 //[ACTIONS];
 const validateLogin = joi.object({
-  phoneNumber: joi.string().required().length(11),
+  email: joi.string().required(),
   password: joi.string().min(6),
-  countryCode: joi.string().length(2),
 });
-const loginUser = async (payload: any) => {
-  return axios.post(configuration.API_ENDPOINT + "/login", {
-    phoneNumber: payload.phoneNumber,
-    countryCode: "NG",
-    password: payload.password,
-  });
-};
 
 function* watchLoginAccount() {
   yield takeEvery(loginAction.LOGIN_CALLER, function* (action: any) {
@@ -108,13 +123,16 @@ function* watchLoginAccount() {
       if (error) {
         yield put({ type: loginAction.LOGIN_FAILED, payload: error.message });
       } else {
-        const $loginUser = yield call(loginUser.bind(null, action.payload));
+        const $loginUser = yield call(
+          SignIn.bind(null, action.payload.email, action.payload.password)
+        );
         yield put({
           type: loginAction.LOGIN_SUCCESS,
-          payload: $loginUser.data,
+          token: $loginUser, // token
         });
       }
-    } catch (e) {
+    } catch (error) {
+      const e: any = error;
       let message: string;
       if (e.response) {
         message = e.response.data.message;
@@ -127,19 +145,10 @@ function* watchLoginAccount() {
 }
 
 const validateSignUp = joi.object({
-  phoneNumber: joi.string().required().length(11),
+  email: joi.string().required(),
   password: joi.string().min(6),
-  countryCode: joi.string().length(2),
   fullName: joi.string().min(4),
 });
-const signUpUser = async (payload: any) => {
-  return axios.post(configuration.API_ENDPOINT + "/signUp", {
-    phoneNumber: payload.phoneNumber,
-    countryCode: "NG",
-    password: payload.password,
-    fullName: payload.fullName,
-  });
-};
 
 const verifyPhoneNumber = async (payload: any) => {
   return axios.post(configuration.API_ENDPOINT + "/verify/sms", {
@@ -156,21 +165,23 @@ function* watchSignUpAccount() {
       if (error) {
         yield put({ type: signUpAction.SIGNUP_FAILED, payload: error.message });
       } else {
-        const $signUpUser = yield call(
-          signUpUser.bind(null as any, action.payload)
+        const token = yield call(
+          CreateUser.bind(
+            null as any,
+            action.payload.fullName,
+            action.payload.email,
+            action.payload.password
+          )
         );
-        const verifyAccount = yield call(
-          verifyPhoneNumber.bind(null, action.payload)
-        );
+
         let payload = {
-          token: verifyAccount.data.payload.token,
-          pin: verifyAccount.data.payload.pin,
-          user: $signUpUser.payload,
+          token: token,
         };
-        yield put({ type: signUpAction.SIGNUP_SUCCESS, payload: payload });
-        action.navigation.push("/auth/verification");
+        yield put({ type: signUpAction.SIGNUP_SUCCESS, token: payload });
+        action.navigation.push("/dashboard");
       }
-    } catch (e) {
+    } catch (error) {
+      const e: any = error;
       let message: string;
       if (e.response) {
         message = e.response.data.message;
@@ -219,7 +230,8 @@ function* watchVerifyPin() {
           action.payload.history.push("/");
         }
       }
-    } catch (e) {
+    } catch (error) {
+      const e: any = error;
       let message: string;
       if (e.response) {
         message = e.response.data.message;
@@ -267,7 +279,8 @@ function* watchSendVerificationPin() {
             });
           }
         }
-      } catch (e) {
+      } catch (error) {
+        const e: any = error;
         let message: string;
         if (e.response) {
           message = e.response.data.message;
@@ -325,7 +338,8 @@ function* watchRessetPassword() {
             });
           }
         }
-      } catch (e) {
+      } catch (error) {
+        const e: any = error;
         let message: string;
         if (e.response) {
           message = e.response.data.message;

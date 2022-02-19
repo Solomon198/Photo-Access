@@ -20,6 +20,7 @@ import { Omit } from "@material-ui/types";
 import { useLocation } from "react-router-dom";
 import Config from "../../configs/env.config";
 import brand from "../../configs/colors.presets";
+import { Logo } from "./sidemenu.styles";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -101,9 +102,7 @@ function Navigator(props: NavigatorProps) {
         <ListItem
           className={clsx(classes.firebase, classes.item, classes.itemCategory)}
         >
-          <h4 style={{ fontSize: 17, fontWeight: "bold" }}>
-            {Config().APP_NAME}
-          </h4>
+          <Logo>{Config().APP_NAME}</Logo>
         </ListItem>
 
         {categories.map(({ id, children }) => (

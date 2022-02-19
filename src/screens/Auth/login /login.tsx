@@ -79,9 +79,8 @@ class Login extends React.Component<Props> {
           disabled={loginAction.LOGIN_STARTED === this.props.loginStatus}
           onClick={() =>
             this.props.doLogin({
-              phoneNumber: this.props.phoneNumber,
+              email: this.props.phoneNumber,
               password: this.props.password,
-              countryCode: "NG",
             })
           }
           fullWidth

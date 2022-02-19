@@ -15,6 +15,7 @@ import Header from "../../../components/app.bar/Header";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Config from "../../../configs/env.config";
 import brand from "../../../configs/colors.presets";
+import { getAuth } from "firebase/auth";
 
 function Copyright() {
   return (

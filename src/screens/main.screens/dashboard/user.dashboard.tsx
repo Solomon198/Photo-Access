@@ -53,9 +53,7 @@ class DashboardUser extends React.Component<Props> {
     showModal: false,
   };
 
-  componentDidMount() {
-    this.props.getCv(this.props.user.userId);
-  }
+  componentDidMount() {}
 
   toggleModal = () => {
     this.setState({ showModal: !this.state.showModal });

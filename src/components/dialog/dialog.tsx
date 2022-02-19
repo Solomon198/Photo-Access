@@ -29,10 +29,10 @@ const DialogComponent = ({
       </DialogContentText>
     </DialogContent>
     <DialogActions>
-      <Components.Button onClick={handleClose} color="primary">
+      <Components.Button transparent onClick={handleClose} color="primary">
         {closeText}
       </Components.Button>
-      <Components.Button onClick={handleAction} color="primary">
+      <Components.Button transparent onClick={handleAction} color="primary">
         {actionText}
       </Components.Button>
     </DialogActions>

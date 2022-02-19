@@ -110,9 +110,8 @@ class SignUP extends Component<Props> {
           onClick={() => {
             this.props.doSignUp(
               {
-                phoneNumber: this.props.phoneNumber,
+                email: this.props.phoneNumber,
                 password: this.props.password,
-                countryCode: "NG",
                 fullName: this.props.fullName,
               },
               this.props.history

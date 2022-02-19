@@ -33,7 +33,7 @@ const DashboardHeader = ({ onDrawerToggle, user }) => (
           <Grid item xs />
 
           <Grid item>
-            <H5>{user.fullName}</H5>
+            <H5>{user?.fullName}</H5>
           </Grid>
         </Grid>
       </Toolbar>

@@ -211,9 +211,7 @@ function AuthReducer(state = intialState, action: any) {
         ...state,
         signUpStatus: signUpAction.SIGNUP_SUCCESS,
         errorSignUp: "",
-        user: action.payload.user,
         token: action.payload.token,
-        pin: action.payload.pin,
       };
       return state;
     }
@@ -240,9 +238,7 @@ function AuthReducer(state = intialState, action: any) {
       state = {
         ...state,
         loginStatus: loginAction.LOGIN_SUCCESS,
-        accessToken: action.payload.accessToken,
-        refreshToken: action.payload.refreshToken,
-        user: action.payload.payload,
+        accessToken: action.token,
       };
       return state;
     }

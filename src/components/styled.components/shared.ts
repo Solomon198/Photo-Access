@@ -24,8 +24,10 @@ export const AuthContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   height: 100%;
+  width: 90%;
+  margin: auto;
   @media (min-width: 992px) {
-    width: 75%;
+    width: 65%;
     margin: auto;
   }
 `;

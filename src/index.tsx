@@ -18,7 +18,7 @@ import AuthRoute from "./screens/Auth/auth.route";
 import UserDashboard from "./screens/main.screens/dashboard/user.dashboard";
 import { useSelector } from "react-redux";
 import Config from "./configs/env.config";
-import firebase from "firebase/app";
+import { initializeApp } from "firebase/app";
 
 let { store, persistor } = reduxConfig();
 
@@ -27,7 +27,8 @@ function RouteConfig() {
     accessToken: state.Auth.accessToken,
   }));
   useEffect(() => {
-    firebase.initializeApp(Config().FIREBASE_CONFIG);
+    initializeApp(Config().FIREBASE_CONFIG);
+    console.log(Config().FIREBASE_CONFIG);
   }, []);
   return (
     <Router>

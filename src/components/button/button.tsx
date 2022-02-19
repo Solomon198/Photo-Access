@@ -9,6 +9,7 @@ const BtnCustom = ({
   color,
   className,
   children,
+  transparent,
 }) => (
   <Button
     onClick={onClick || null}
@@ -17,6 +18,11 @@ const BtnCustom = ({
     variant={variant}
     color={color}
     className={className}
+    style={{
+      backgroundImage: transparent
+        ? "#fff"
+        : "linear-gradient(90deg, #adcde0, #039dfc)",
+    }}
   >
     {children}
   </Button>
@@ -30,6 +36,7 @@ BtnCustom.propTypes = {
   onClick: PropTypes.func,
   className: PropTypes.string,
   children: PropTypes.any,
+  transparent: PropTypes.bool,
 };
 
 export default BtnCustom;
