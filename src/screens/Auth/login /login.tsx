@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { inputAction, loginAction } from "../auth.actions";
 import Components from "../../../components";
+import { Title } from "./login.styles";
 
 type Props = {
   phoneNumber: string;
@@ -39,9 +40,7 @@ class Login extends React.Component<Props> {
   render() {
     return (
       <>
-        <Typography className="createAccountTitle" component="h1" variant="h5">
-          Sign in
-        </Typography>
+        <Title>Sign in</Title>
         {this.props.errorLogin &&
           this.props.loginStatus === loginAction.LOGIN_FAILED && (
             <div className="alert alert-danger mt-2" role="alert">
@@ -53,19 +52,19 @@ class Login extends React.Component<Props> {
           margin="normal"
           required
           fullWidth
-          type="number"
+          type="email"
           disabled={loginAction.LOGIN_STARTED === this.props.loginStatus}
           id="number"
-          label="Phone Number"
+          label="Email"
           value={this.props.phoneNumber}
-          onChange={(e) => this.props.setLoginPhoneNumber(e.target.value)}
+          onChange={(text) => this.props.setLoginPhoneNumber(text)}
           name="number"
           autoFocus
         />
         <Components.TextInput
           variant="outlined"
           margin="normal"
-          onChange={(e) => this.props.setLoginPassword(e.target.value)}
+          onChange={(text) => this.props.setLoginPassword(text)}
           required
           disabled={loginAction.LOGIN_STARTED === this.props.loginStatus}
           value={this.props.password}

@@ -24,21 +24,11 @@ import { makeStyles } from "@material-ui/core/styles";
 import Config from "../../configs/env.config";
 import Components from "../../components";
 import shadows, { Shadows } from "@material-ui/core/styles/shadows";
+import { AuthContainer } from "../../components/styled.components/shared";
 
 createMuiTheme({
   shadows: shadows.map(() => "none") as Shadows,
 });
-
-function Copyright() {
-  return (
-    <Typography variant="body2" color="textSecondary" align="center">
-      {"Copyright © "}
-      {Config().APP_NAME + " "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -48,22 +38,16 @@ const useStyles = makeStyles((theme) => ({
     backgroundRepeat: "no-repeat",
     backgroundSize: "cover",
     backgroundPosition: "center",
+    maxWidth: "100%",
   },
   paper: {
-    margin: theme.spacing(8, 4),
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
+    flex: 1,
+    height: "100%",
+    maxHeight: "100%",
   },
   avatar: {
     margin: theme.spacing(1),
     backgroundColor: theme.palette.secondary.main,
-  },
-  form: {
-    width: "90%", // Fix IE 11 issue.
-    marginTop: theme.spacing(1),
-    marginRight: "3%",
-    marginLeft: "3%",
   },
   submit: {
     margin: theme.spacing(3, 0, 2),
@@ -85,13 +69,8 @@ function AuthRoute() {
         className={classes.image}
       />
       <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
-        <Components.AppMenu />
         <div className={classes.paper}>
-          <Avatar className={classes.avatar}>
-            <LockOutlinedIcon />
-          </Avatar>
-
-          <form className={classes.form} noValidate>
+          <AuthContainer>
             <Router>
               <Switch>
                 <Route path="/auth/signup" component={SignUp} />
@@ -107,10 +86,7 @@ function AuthRoute() {
                 />
               </Switch>
             </Router>
-            <Box mt={5}>
-              <Copyright />
-            </Box>
-          </form>
+          </AuthContainer>
         </div>
       </Grid>
     </Grid>

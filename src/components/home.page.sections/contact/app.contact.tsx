@@ -4,11 +4,7 @@ const Contacts = () => (
   <>
     <Header>Follow our social platforms </Header>
 
-    <ContentContainer
-      style={{ marginTop: -50 }}
-      className="contact"
-      id="contact"
-    >
+    <section style={{ marginTop: -50 }} className="contact " id="contact">
       <div className="container">
         <ul className="list-inline list-social">
           <li className="list-inline-item social-twitter">
@@ -34,7 +30,7 @@ const Contacts = () => (
           </li>
         </ul>
       </div>
-    </ContentContainer>
+    </section>
   </>
 );
 export default Contacts;

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import Button from "@material-ui/core/Button";
-import TextField from "@material-ui/core/TextField";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { inputAction, signUpAction } from "../auth.actions";
 import Components from "../../../components/index";
+import { Note } from "../../../components/styled.components/shared";
+import { Title } from "./signup.style";
 
 type Props = {
   fullName: string;
@@ -47,9 +47,13 @@ class SignUP extends Component<Props> {
   render() {
     return (
       <>
-        <Typography className="createAccountTitle" component="h1" variant="h5">
+        <Title className="createAccountTitle" component="h1" variant="h5">
           Create Account
-        </Typography>
+        </Title>
+        <Note>
+          Create a access photo account to enjoy all priviledges that comes with
+          an application with great flexibility and tools
+        </Note>
         {this.props.errorSignUp &&
           this.props.signUpStatus === signUpAction.SIGNUP_FAILED && (
             <div className="alert alert-danger mt-2" role="alert">
@@ -62,7 +66,7 @@ class SignUP extends Component<Props> {
           required
           fullWidth
           value={this.props.fullName}
-          onChange={(e) => this.props.setFullName(e.target.value)}
+          onChange={(text) => this.props.setFullName(text)}
           id="fullName"
           label="Full Name"
           name="fullName"
@@ -76,11 +80,11 @@ class SignUP extends Component<Props> {
           required
           fullWidth
           id="phoneNumber"
-          onChange={(e) => this.props.setPhoneNumber(e.target.value)}
-          label="Phone Number"
+          onChange={(text) => this.props.setPhoneNumber(text)}
+          label="Email"
           value={this.props.phoneNumber}
           name="phoneNumber"
-          type="number"
+          type="email"
           disabled={this.props.signUpStatus === signUpAction.SIGNUP_STARTED}
         />
         <Components.TextInput
@@ -91,7 +95,7 @@ class SignUP extends Component<Props> {
           name="password"
           value={this.props.password}
           label="Password"
-          onChange={(e) => this.props.setPassword(e.target.value)}
+          onChange={(text) => this.props.setPassword(text)}
           type="password"
           id="password"
           disabled={this.props.signUpStatus === signUpAction.SIGNUP_STARTED}

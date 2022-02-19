@@ -2,7 +2,7 @@
   "name": "photo-access",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8070",
+  "proxy": "https://indigene.herokuapp.com",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@material-ui/icons": "^4.11.2",
@@ -19,7 +19,7 @@
     "axios": "^0.21.1",
     "bootstrap": "^4.6.0",
     "express": "^4.17.1",
-    "firebase": "^8.6.5",
+    "firebase": "^9.6.7",
     "joi": "^17.4.0",
     "jquery": "^3.6.0",
     "moment": "^2.29.1",

@@ -8,7 +8,7 @@ const config = {
   measurementId: "G-HDF0R49VD1",
 };
 const PRODUCTION = {
-  API_ENDPOINT: "https://jobworld-api.herokuapp.com",
+  API_ENDPOINT: "https://indigene.herokuapp.com",
   APP_NAME: "Photo Access",
   FIREBASE_CONFIG: config,
 };
@@ -22,7 +22,7 @@ const DEVELOPEMENT = {
 export default function environmentConfig() {
   switch (process.env.NODE_ENV) {
     case "development": {
-      return PRODUCTION;
+      return DEVELOPEMENT;
     }
 
     case "production": {
@@ -30,7 +30,7 @@ export default function environmentConfig() {
     }
 
     default: {
-      return PRODUCTION;
+      return DEVELOPEMENT;
     }
   }
 }
